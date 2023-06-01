@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+  <div th:fragment="transfer" class="card transfer-card">
+  <!-- Card Body -->
+  <div class="card-body">
+    <!-- Transfer Form --> 
+    <form action="/transact/transfer" method="POST">
+    
+      <!-- Form Group -->
+      <div class="form-group mb-2">
+        <label>Select Account</label>
+        <!-- Select Account Option -->
+        <select name="transferFrom" class="form-control">
+          <option value="">-- Select Account --</option>
+          <th:block th:if="${accounts}!=null" th:each="account : ${accounts}">
+            <option th:value="${account.getAccountId()}"
+                                 th:text="${account.getAccountName()}"></option>
+          </th:block>
+        </select>
+        <!-- Select Account Option -->
+      </div>
+      <!-- Form Group -->
+
+      <!-- Form Group -->
+      <div class="form-group mb-2">
+        <label>Select Account</label>
+        <!-- Select Account Option -->
+        <select name="transferTo" class="form-control">
+          <option value="">-- Select Account --</option>
+          <th:block th:if="${accounts}!=null" th:each="account : ${accounts}">
+            <option th:value="${account.getAccountId()}" 
+                                th:text="${account.getAccountName()}"></option>
+          </th:block>
+        </select>
+        <!-- Select Account Option -->
+      </div>
+      <!-- Form Group -->
+
+      <!-- Form Group -->
+      <div class="form-group mb-2">
+        <label>Enter Transfer Amount</label>
+        <input name="transferAmount"  class="form-control" 
+                               type="text" placeholder="Enter Transfer Amount">
+      </div>
+      <!-- Form Group -->
+
+      <!-- Form Group -->
+      <div class="form-group mb-2">
+        <button class="btn btn-md transact-btn">Transfer</button>
+      </div>
+      <!-- Form Group --> 
+       
+    </form>   
+    <!-- Transfer Form --> 
+  </div>
+  <!-- Card Body -->
+</div>
+</body>
+</html>

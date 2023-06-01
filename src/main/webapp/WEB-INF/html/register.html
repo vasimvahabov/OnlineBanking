@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+  <link rel="stylesheet" href="css/default.css">
+  <link rel="stylesheet" href="css/fontawesome/css/all.css">
+  <title th:text="${PageTitle}"></title>
+</head>
+<body class="d-flex align-items-center justify-content-center">
+  
+  <!-- Card Registration Form -->
+  <div class="card registration-form-card col-6 bg-transparent border-0">
+
+    <!-- Card Body -->
+    <div class="card-body">
+
+      <!-- Form Header -->
+      <h1 class="form-header card-title mb-3">
+        <i class="fa fa-edit"></i> Register
+      </h1>
+      <!-- Form Header -->
+      
+      <!-- Display Error -->
+      <div th:if="${passwordsMisMatch}!=null" 
+                                  class="alert alert-danger text-center border border-danger">
+        <b th:text="${passwordsMisMatch}"></b> 
+      </div>
+      <!-- Display Error -->
+      
+      <!-- Display Error -->
+      <div th:if="${success}!=null" class="alert alert-success text-center border border-danger">
+        <b th:text="${success}"></b> 
+      </div>
+      <!-- Display Error -->
+
+      <!-- Registration Form -->
+      <form action="/register" class="reg-form" th:object="${registerUser}" method="POST">
+
+        <!-- Row -->
+        <div class="row">
+          
+          <!-- Form Group -->
+          <div class="form-group col">
+            <input name="firstName" class="form-control form-control-lg" 
+                                      type="text" placeholder="Enter First Name...">
+            <span th:if="${#fields.hasErrors('firstName')}!=null" 
+                              th:errors="*{firstName}" class="text-white bg-danger"></span>
+          </div>
+          <!-- Form Group -->
+
+          <!-- Form Group -->
+          <div class="form-group col">
+            <input name="lastName" class="form-control form-control-lg" 
+                                              type="text" placeholder="Enter Last Name...">
+            <span th:if="${#fields.hasErrors('lastName')}" 
+                             th:errors="*{lastName}" class="text-white bg-danger"></span>
+          </div>
+          <!-- Form Group -->
+
+        </div>
+        <!-- Row -->
+
+        <!-- Form Group -->
+        <div class="form-group col">
+          <input name="email" class="form-control form-control-lg" placeholder="Enter Email...">
+          <span th:if="${#fields.hasErrors('email')}" 
+                                    th:errors="*{email}" class="text-white bg-danger"></span>
+        </div>
+        <!-- Form Group -->
+        
+        <!-- Row -->
+        <div class="row">
+
+          <!-- Form Group -->
+          <div class="form-group col">
+            <input name="password" class="form-control form-control-lg"
+                                      type="password" placeholder="Enter Password...">
+            <span th:if="${#fields.hasErrors('password')}" 
+                          th:errors="*{password}" class="text-white bg-danger"></span>
+          </div>
+          <!-- Form Group -->
+
+          <!-- Form Group -->
+          <div class="form-group col">
+            <input name="confirmPassword" class="form-control form-control-lg" 
+                                     type="password" placeholder="Confirm Password...">
+            <span th:if="${confirm_password}!=null" 
+                     class="text-white bg-danger" th:text="${confirm_password}"></span>
+          </div>
+          <!-- Form Group -->
+
+        </div>
+        <!-- Row -->
+
+        <!-- Form Group -->
+        <div class="form-group col">
+          <button class="btn btn-lg">Register</button>
+        </div>
+        <!-- Form Group -->
+
+      </form>
+      <!-- Registration Form -->
+
+      <!-- Card Text -->
+      <div class="card-text text-white my-2">
+        Already have an account ? 
+        <span class="ms-2">
+          <a href="/login" class="btn btn-md text-warning">Sign In</a>
+        </span>
+      </div>
+      <!-- Card Text -->
+
+      <!-- Back Button -->
+      <small class="text-warning">
+        <i class="fa fa-arrow-alt-circle-left"></i> 
+        <a href="/" class="btn btm-sm text-warning">Back</a>
+      </small>
+      <!-- Back Button -->
+
+    </div>
+    <!-- Card Body -->
+
+  </div>
+  <!-- Card Registration Form -->
+
+</body>
+</html>

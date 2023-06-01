@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+  <div th:fragment="deposit" class="card deposit-card">
+  <!-- Card Body -->
+  <div class="card-body">
+  
+    <!-- Deposit Form -->
+    <form action="/transact/deposit" method="POST" class="deposit-form">
+ 
+      <!-- Form Group -->
+      <div class="form-group mb-2">
+        <label>Enter Deposit Amount</label>
+        <input type="text" name="depositAmount" 
+                         class="form-control" placeholder="Enter Deposit Amount...">
+      </div>
+      <!-- Form Group -->
+         
+      <!-- Form Group -->
+      <div class="form-group">
+        <label>Select Account</label>
+        <!-- Select Account Option -->
+        <select name="accountId" class="form-control">
+          <option value="">-- Select Account --</option>
+          <th:block th:if="${accounts}!=null" th:each="account : ${accounts}">
+            <option th:value="${account.getAccountId()}" 
+                                th:text="${account.getAccountName()}"></option>            
+          </th:block>
+        </select>
+        <!-- Select Account Option -->
+      </div>
+      <!-- Form Group -->
+
+      <!-- Form Group -->
+      <div class="form-group my-2">
+        <button class="btn btn-md transact-btn">Deposit</button>
+      </div>
+      <!-- Form Group --> 
+
+    </form>
+    <!-- Deposit Form -->
+    
+  </div>
+  <!-- Card Body -->
+</div>
+</body>
+</html>

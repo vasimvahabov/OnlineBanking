@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+  <div th:fragment="addAccount" class="offcanvas offcanvas-end"
+                    id="offcanvasRight" tabindex="-1" aria-labelledby="offcanvasRightLabel">
+    
+    <div class="offcanvas-header">
+      <h5 id="offcanvasRightLabel" class="text-white">Create / Add an Account</h5>
+      <button type="button" class="btn-close text-reset" 
+                         data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <!-- Offcanvas Body : Account Form Wrapper -->
+    <div class="offcanvas-body">
+      <!-- Card : Account Form -->
+      <div class="card">
+        <!-- Card Body -->
+        <div class="card-body">
+          <form action="/account/create_account" class="add-account-form" method="POST">
+            
+            <!-- Form Group -->
+            <div class="form-group mb-3">
+              <label>Enter Account Name</label>
+              <input name="accountName" class="form-control"
+                               type="text" placeholder="Enter Account Name...">
+            </div>
+            <!-- Form Group -->
+
+            <!-- Form Group -->
+            <div class="form-group mb-3">
+              <label>Select Account Type</label>
+              <select name="accountType" class="form-control">
+                <option value="">-- Select Account Type --</option>
+                <option value="check">Check</option>
+                <option value="savings">Savings</option>
+                <option value="business">Business</option>
+              </select>
+            </div>
+            <!-- Form Group -->
+
+            <!-- Form Group -->
+            <div class="form-group mb-3">
+              <button class="btn btn-md transact-btn">Add Account</button>
+            </div>
+            <!-- Form Group -->
+
+          </form>
+        </div>
+        <!-- Card Body -->
+      </div>
+      <!-- Card : Account Form -->
+    </div>
+    <!-- Offcanvas Body : Account Form Wrapper -->
+
+  </div>
+</body>
+</html>
+
+  
+  

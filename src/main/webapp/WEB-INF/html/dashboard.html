@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/bootstrap/bootstrap.css"> 
+  <link rel="stylesheet" href="../css/fontawesome/css/all.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <script src="../js/bootstrap.bundle.js"></script>
+  <title th:text="${PageTitle}"></title>
+</head>
+<body>
+
+  <!-- Main Page Header -->
+  <div th:replace="~{components/include/header :: header}"></div>
+  <!-- Main Page Header -->
+  
+  <!-- Transact Offcanvas -->
+  <div th:replace="~{components/transactOffcanvas :: transact}"></div>
+  <!-- Transact Offcanvas -->
+  
+  <!-- Add Account Offcanvas -->
+  <div th:replace="~{components/addAccountOffcanvas :: addAccount}"></div>
+  <!-- Add Account Offcanvas -->
+  
+  <!-- Container-->
+  <div class="container">
+  
+    <!-- Display Success Message -->
+    <div th:if="${success}!=null" class="alert alert-info text-center border border-info">
+      <b th:text="${success}"></b>
+    </div>
+    <!-- Display Success Message -->
+	  
+    <!-- Display Error Message -->
+    <div th:if="${error}!=null" class="alert alert-danger text-center border border-danger">
+      <b th:text="${error}"></b>
+    </div>
+    <!-- Display error Message -->
+	  
+  </div>
+  <!-- Container -->
+  
+  <th:block th:if="${#lists.size(accounts)}!=0">
+    <div th:replace="~{components/accountsDisplay :: accountsDisplay}"></div>
+  </th:block>
+  
+  <th:block th:unless="${#lists.size(accounts)!=0}">
+    <div th:replace="~{components/noAccountDisplay :: noAccountDisplay}"></div>
+  </th:block>
+  
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+  <!-- Accounts Display Fragment Wrapper -->
+  <div th:fragment="accountsDisplay" class="accountDisplayFragment">
+    
+    <!-- Container -->
+    <div class="container d-flex"> 
+      <button id="add-account-btn" class="btn btn-lg shadow" type="button" aria-expanded="false"
+     data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"  aria-controls="offcanvasRight">
+      <i class="fa fa-credit-card"></i> 
+       Add New Account
+      </button> 
+	
+      <button id="transact-btn" class="btn btn-lg ms-auto shadow" data-bs-target="#offcanvasExample" 
+     type="button" data-bs-toggle="offcanvas" aria-expanded="false" aria-controls="offCanvasExample">
+        <i class="fa fa-wallet"></i>
+        Transact
+      </button>
+	
+    </div>
+    <!-- Container -->
+	
+    <!-- Container : Total Accounts Balance -->
+    <div class="container d-flex py-3">
+      <h2 class="me-auto">Total Accounts Balance : </h2>
+      <h2 th:if="${totalBalance}!=null" th:text="${totalBalance}" class="ms-auto"></h2>
+    </div>
+    <!-- Container : Total Accounts Balance -->
+     
+    <!-- Container : Accordion Menu / Drop Down -->
+    <div class="container">
+      <!-- Accordion Menu / Drop Down -->
+      <div th:if="${accounts}!=null" th:each="account : ${accounts}" 
+                                    class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            
+          <h2 class="accordion-header" id="flush-headingOne">
+             <button th:text="${account.getAccountName()}" class="accordion-button collapsed" 
+           data-bs-toggle="collapse" aria-expanded="false" aria-controls="flush-collapseOne" 
+           type="button" th:attr="data-bs-target=@{'#flush-'+${account.getAccountId()}}"></button>
+          </h2>
+
+          <div th:attr="id=@{'flush-'+${account.getAccountId()}}" class="accordion-collapse collapse" 
+                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">  
+            <div class="accordion-body">
+               <!-- Account Details List -->
+               <ul class="list-group list-group-flush">
+                 <li class="list-group-item d-flex">
+                   Account Name : 
+                   <span class="ms-auto"> <b th:text="${account.getAccountName()}" ></b></span>
+                 </li>      
+                 <li class="list-group-item d-flex">
+                   Account Number : 
+                   <span class="ms-auto"> <b th:text="${account.getAccountNumber()}"></b></span>
+	      </li>
+                 <li class="list-group-item d-flex">
+                   Account Type :
+                   <span class="ms-auto"> <b th:text="${account.getAccountType()}"></b></span>
+                 </li>
+                 <li class="list-group-item d-flex">
+                   Account Balance :
+                   <span class="ms-auto"> <b th:text="${account.getBalance()}"></b></span>
+                 </li>
+                 <li class="list-group-item d-flex">
+                   Created At : 
+                   <span class="ms-auto"> <b th:text="${account.getCreatedAt}"></b></span>
+                 </li>
+               </ul>
+               <!-- Account Details List -->    
+            </div>
+          </div>
+            
+        </div>
+       </div>
+       <!-- Accordion Menu / Drop Down -->
+     </div>
+     <!-- Container : Accordion Menu / Drop Down --> 
+     
+  </div>
+  <!-- Accounts Display Fragment Wrapper --> 
+</body>
+</html>
+  

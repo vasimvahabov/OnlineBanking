@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+  <div th:fragment="payment" class="card payment-card">
+  <!-- Card Body -->
+  <div class="card-body">
+
+    <!-- Payment Form -->
+    <form action="/transact/payment" method="POST">
+    
+      <!-- Form Group -->
+      <div class="form-group mb-2">
+        <label>Account Holder / Beneficiary</label>
+        <input type="text" name="beneficiary" class="form-control"
+                      placeholder="Enter Account Holder / Beneficiary name..."> 
+      </div>
+      <!-- Form Group -->
+	
+      <!-- Form Group -->
+      <div class="form-group mb-2">
+        <label>Beneficiary Account Number</label>
+        <input type="text" name="accountNumber" class="form-control"
+                          placeholder="Enter Beneficiary account number...">
+      </div>
+      <!-- Form Group -->
+	
+      <!-- Form Group -->
+      <div class="form-group mb-2">
+        <label>Select Account</label>
+        <!-- Select Account Option -->
+        <select name="accountId" class="form-control">
+            <option value="">-- Select Account --</option>
+            <th:block th:if="${accounts}!=null" th:each="account :${accounts}">
+              <option th:value="${account.getAccountId()}" 
+                                  th:text="${account.getAccountName()}"></option>
+	</th:block>
+        </select>
+        <!-- Select Account Option -->
+      </div>
+      <!-- Form Group -->
+	
+      <!-- Form Group -->
+      <div class="form-group mb-2">
+        <label>Reference</label>
+        <input type="text" name="reference" class="form-control" placeholder="Enter Reference..."> 
+      </div>
+      <!-- Form Group -->
+	
+      <!-- Form Group -->
+      <div class="form-group mb-2">
+        <label>Enter Payment Amount</label>
+        <input type="text" name="paymentAmount" class="form-control" 
+                                            placeholder="Enter Payment Amount...">
+      </div>
+      <!-- Form Group -->
+	
+      <!-- Form Group -->
+      <div class="form-group mb-2">
+        <button class="btn btn-md transact-btn">Pay</button>
+      </div>
+      <!-- Form Group -->
+    
+    </form>
+    <!-- Payment Form -->
+    
+  </div>
+  <!-- Card Body -->
+</div>
+</body> 
+</html>
+
+
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/bootstrap/bootstrap.css"> 
+  <link rel="stylesheet" href="../css/fontawesome/css/all.css">
+  <link rel="stylesheet" href="../css/main.css"> 
+  <title th:text="${PageTitle}"></title>
+</head>
+<body>
+  
+  <!-- Header Transaction History -->
+  <div th:replace="~{components/include/header :: header}"></div>
+  <!-- Header Transaction History -->
+  
+  <!-- Container -->
+  <div class="container my-4">
+    <!-- Card Transaction History -->
+    <div class="card transaction-history shadow">
+      
+      <!-- Card Header -->
+      <div class="card-header">
+        <i class="fas fa-credit-card me-2" aria-hidden="true"></i> Transaction History
+      </div>
+      <!-- Card Header -->
+        
+      <!-- Card Body -->  
+      <div class="card-body">
+        <table th:if="${transaction_history}!=null" class="table text-center table-striped">
+          
+          <thead>
+           <tr>
+             <th>Transaction Id</th>
+             <th>Transaction Type</th>
+             <th>Amount</th>
+             <th>Source</th>
+             <th>Status</th>
+             <th>Reason Code</th>
+             <th>Created at</th> 
+           </tr>
+          </thead>
+          
+          <tbody>
+            <tr th:each="transactionHistory : ${transaction_history}">
+              <td th:text="${transactionHistory.getTransactionId()}"></td>
+              <td th:text="${transactionHistory.getTransactionType()}"></td> 
+              <td th:text="${transactionHistory.getAmount()}"></td>
+              <td th:text="${transactionHistory.getSource()}"></td>
+              <td th:text="${transactionHistory.getStatus()}"></td>
+              <td th:text="${transactionHistory.getReasonCode()}"></td>
+              <td th:text="${transactionHistory.getCreatedAt()}"></td>
+            </tr>
+          </tbody>
+          
+        </table>
+      </div>
+      <!-- Card Body -->  
+        
+    </div>
+    <!-- Card Transaction History -->
+  </div>
+  <!-- Container --> 
+  
+</body>
+</html>
